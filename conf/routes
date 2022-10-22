@@ -1,15 +1,30 @@
-# Routes
-# This file defines all application routes (Higher priority routes first)
-# https://www.playframework.com/documentation/latest/ScalaRouting
-# ~~~~
-
-# An example controller showing a sample home page
+### NoDocs ###
 GET     /                           controllers.HomeController.index()
+
+###
+#tags:
+#- Test
+#summary: name
+#operationId: name
+#produces:
+#- application/json
+#parameters:
+#- in: query
+#  name: name
+#  required: true
+#  type: string
+#responses:
+#  '200':
+#    description: success
+#  '500':
+#    description: Internal server error
+###
 GET     /name                       controllers.HomeController.getNameInJson(name: String)
 
-# Map static resources from the /public folder to the /assets URL path
-#Swagger
-#GET     /assets/*file               controllers.Assets.at(path="/public", file: Asset)
-GET     /swagger.json                controllers.ApiHelpController.getResources
-## NoDocs
-GET     /docs/swagger-ui/*file      controllers.Assets.at(path: String="/public/lib/swagger-ui", file: String)
+### NoDocs ###
+GET           /docs/swagger-ui/*file                 controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)
+
+### NoDocs ###
+GET     /swagger.json        controllers.Assets.at(path="/public", file="swagger.json")
+### NoDocs ###
+GET     /swagger/                           controllers.Assets.at(path="/public/swagger-ui", file="index.html")
